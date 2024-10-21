@@ -1,101 +1,128 @@
 package io.github.firzaelbuho.hlsmui.styles.themes
 
-import androidx.compose.material.Shapes
-import androidx.compose.material.Typography
-import io.github.firzaelbuho.hlsmui.styles.colors.HlsmColors
+import androidx.compose.material3.Shapes
+import androidx.compose.material3.Typography
+import io.github.firzaelbuho.hlsmui.styles.scheme.HlsmColorScheme
 import io.github.firzaelbuho.hlsmui.styles.shapes.HlsmShape
-import io.github.firzaelbuho.hlsmui.styles.typography.HlsmTypography
 
 
 class HlsmTheme (
     val name:String = "default",
-    val typography: Typography = HlsmTypography.Default,
-    val hlsmColors: HlsmColors = HlsmColors.Default,
+    val typography : Typography = Typography(),
+    val hlsmColorScheme: HlsmColorScheme = HlsmColorScheme.Default,
     val shapes: Shapes = HlsmShape.Default
 ){
     companion object{
 
-        val themes = listOf(
-            HlsmTheme.Default,
-            HlsmTheme.Candy,
-            HlsmTheme.Chocolate,
-            HlsmTheme.Elegant,
-            HlsmTheme.Forest,
-            HlsmTheme.LangitBiru,
-            HlsmTheme.Nature,
-            HlsmTheme.Ocean,
-            HlsmTheme.Pastel,
-            HlsmTheme.RedGroup,
-            HlsmTheme.Cupcake,
-            HlsmTheme.OceanBreeze,
-            HlsmTheme.SunsetGlow,
-            HlsmTheme.ForestDream,
-            HlsmTheme.Lavender
 
-        )
 
         val Default = HlsmTheme()
         val Candy = HlsmTheme(
             name = "Candy",
-            hlsmColors = HlsmColors.Candy
+            hlsmColorScheme = HlsmColorScheme.Candy
         )
         val Chocolate = HlsmTheme(
             name = "Chocolate",
-            hlsmColors = HlsmColors.Chocolate
-        )
-        val Elegant = HlsmTheme(
-            name = "Elegant",
-            hlsmColors = HlsmColors.Elegant
-        )
-        val Forest = HlsmTheme(
-            name = "Forest",
-            hlsmColors = HlsmColors.Forest
-        )
-        val LangitBiru = HlsmTheme(
-            name = "Langit Biru",
-            hlsmColors = HlsmColors.LangitBiru
-        )
-        val Nature = HlsmTheme(
-            name = "Nature",
-            hlsmColors = HlsmColors.Nature
-        )
-        val Ocean = HlsmTheme(
-            name = "Ocean",
-            hlsmColors = HlsmColors.Ocean
-        )
-        val Pastel = HlsmTheme(
-            name = "Pastel",
-            hlsmColors = HlsmColors.Pastel
-        )
-        val RedGroup = HlsmTheme(
-            name = "Red Group",
-            hlsmColors = HlsmColors.RedGroup
+            hlsmColorScheme = HlsmColorScheme.Chocolate
         )
 
         val Cupcake = HlsmTheme(
             name = "Cupcake",
-            hlsmColors = HlsmColors.Cupcake
+            hlsmColorScheme = HlsmColorScheme.Cupcake
+        )
+        val Elegant = HlsmTheme(
+            name = "Elegant",
+            hlsmColorScheme = HlsmColorScheme.Elegant
         )
 
-        val OceanBreeze = HlsmTheme(
-            name = "Ocean Breeze",
-            hlsmColors = HlsmColors.OceanBreeze
+        val Emerald = HlsmTheme(
+            name = "Emerald",
+            hlsmColorScheme = HlsmColorScheme.Emerald
         )
 
-        val SunsetGlow = HlsmTheme(
-            name = "Sunset Glow",
-            hlsmColors = HlsmColors.SunsetGlow
+        val Forest = HlsmTheme(
+            name = "Forest",
+            hlsmColorScheme = HlsmColorScheme.Forest
         )
 
-        val ForestDream = HlsmTheme(
-            name = "Forest Dream",
-            hlsmColors = HlsmColors.ForestDream
+        val Galaxy = HlsmTheme(
+            name = "Galaxy",
+            hlsmColorScheme = HlsmColorScheme.Galaxy
+        )
+
+        val LangitBiru = HlsmTheme(
+            name = "LangitBiru",
+            hlsmColorScheme = HlsmColorScheme.LangitBiru
         )
 
         val Lavender = HlsmTheme(
             name = "Lavender",
-            hlsmColors = HlsmColors.Lavender
+            hlsmColorScheme = HlsmColorScheme.Lavender
         )
+
+        val Nature = HlsmTheme(
+            name = "Nature",
+            hlsmColorScheme = HlsmColorScheme.Nature
+        )
+
+        val Ocean = HlsmTheme(
+            name = "Ocean",
+            hlsmColorScheme = HlsmColorScheme.Ocean
+        )
+
+
+        val Pastel = HlsmTheme(
+            name = "Pastel",
+            hlsmColorScheme = HlsmColorScheme.Pastel
+        )
+
+
+        val RedGroup = HlsmTheme(
+            name = "RedGroup",
+            hlsmColorScheme = HlsmColorScheme.RedGroup
+        )
+
+        val Sky = HlsmTheme(
+            name = "Sky",
+            hlsmColorScheme = HlsmColorScheme.Sky
+        )
+
+        val Sunset = HlsmTheme(
+            name = "Sunset",
+            hlsmColorScheme = HlsmColorScheme.Sunset
+        )
+
+        val Vintange = HlsmTheme(
+            name = "Vintange",
+            hlsmColorScheme = HlsmColorScheme.Vintange
+        )
+
+
+
+
+        fun getAllThemes():List<HlsmTheme>{
+            val themes = listOf(
+                HlsmTheme.Default,
+                HlsmTheme.Candy,
+                HlsmTheme.Chocolate,
+                HlsmTheme.Elegant,
+                HlsmTheme.Forest,
+                HlsmTheme.RedGroup,
+                HlsmTheme.Nature,
+                HlsmTheme.Galaxy,
+                HlsmTheme.Ocean,
+                HlsmTheme.Pastel,
+                HlsmTheme.Cupcake,
+                HlsmTheme.Sunset,
+                HlsmTheme.Lavender,
+                HlsmTheme.Emerald,
+                HlsmTheme.Sky,
+                HlsmTheme.Vintange,
+                HlsmTheme.LangitBiru
+
+                )
+            return themes
+        }
 
     }
 }

@@ -9,49 +9,27 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import io.github.firzaelbuho.hlsmui.composable.DarkModeSwitch
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import io.github.firzaelbuho.hlsmui.composable.HlsmAppTheme
 import io.github.firzaelbuho.hlsmui.composable.ThemeSelector
-import io.github.firzaelbuho.hlsmui.styles.colors.HlsmColors
 import io.github.firzaelbuho.hlsmui.styles.themes.HlsmTheme
-import io.github.firzaelbuho.hlsmui.styles.typography.HlsmTypography
 
 
 @Composable
 @Preview
 fun App() {
 
-    val yellow = HlsmTheme(
-        name = "yellow",
-        hlsmColors = HlsmColors.generateVibrantColors(Color.Yellow)
-    )
-    val themes = listOf(
-        HlsmTheme.Default,
-        HlsmTheme.Candy,
-        HlsmTheme.Chocolate,
-        HlsmTheme.Elegant,
-        HlsmTheme.Forest,
-        HlsmTheme.LangitBiru,
-        HlsmTheme.Nature,
-        HlsmTheme.Ocean,
-        HlsmTheme.Pastel,
-        HlsmTheme.RedGroup,
-        HlsmTheme.Cupcake,
-        HlsmTheme.OceanBreeze,
-        HlsmTheme.SunsetGlow,
-        HlsmTheme.ForestDream,
-        yellow
-    )
+
+    val themes = HlsmTheme.getAllThemes()
     var currentTheme  by remember { mutableStateOf(HlsmTheme.Candy) }
     var isDark by remember {mutableStateOf(false)}
 
@@ -63,7 +41,7 @@ fun App() {
         Column(
             Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colors.background)
+                .background(MaterialTheme.colorScheme.background)
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -87,8 +65,8 @@ fun App() {
             )
             Text(
                 text = "Button Shapes",
-                color = MaterialTheme.colors.onBackground,
-                style = MaterialTheme.typography.h5
+                color = MaterialTheme.colorScheme.onBackground,
+                style = MaterialTheme.typography.labelSmall
             )
             ButtonTest()
             BoxTest()
@@ -111,7 +89,7 @@ fun ButtonTest(){
         ){
             Text(
                 text = "Small Round",
-                color = MaterialTheme.colors.onPrimary
+                color = MaterialTheme.colorScheme.onPrimary
             )
         }
         Button(
@@ -120,7 +98,7 @@ fun ButtonTest(){
         ){
             Text(
                 text = "Medium Round",
-                color = MaterialTheme.colors.onPrimary
+                color = MaterialTheme.colorScheme.onPrimary
             )
         }
         Button(
@@ -129,7 +107,7 @@ fun ButtonTest(){
         ){
             Text(
                 text = "Large Round",
-                color = MaterialTheme.colors.onPrimary
+                color = MaterialTheme.colorScheme.onPrimary
             )
         }
     }
@@ -145,35 +123,34 @@ fun BoxTest(){
 
     ){
         Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colors.primary),
+            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.primary),
             contentAlignment = Alignment.Center
         ){
             Text(
                 text = "Primary",
-                color = MaterialTheme.colors.onPrimary,
-                fontSize = MaterialTheme.typography.caption.fontSize
-
+                color = MaterialTheme.colorScheme.onPrimary,
+                fontSize = MaterialTheme.typography.labelSmall.fontSize
             )
         }
         Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colors.secondary),
+            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.secondary),
             contentAlignment = Alignment.Center
         ){
             Text(
                 text = "Secondary",
-                color = MaterialTheme.colors.onSecondary,
-                fontSize = MaterialTheme.typography.caption.fontSize
+                color = MaterialTheme.colorScheme.onSecondary,
+                fontSize = MaterialTheme.typography.labelSmall.fontSize
             )
 
         }
         Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colors.primaryVariant),
+            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.tertiary),
             contentAlignment = Alignment.Center
         ){
             Text(
-                text = "1st Variant",
-                color = MaterialTheme.colors.onPrimary,
-                fontSize = MaterialTheme.typography.caption.fontSize
+                text = "tertiary",
+                color = MaterialTheme.colorScheme.onTertiary,
+                fontSize = MaterialTheme.typography.labelSmall.fontSize
             )
         }
 
@@ -186,34 +163,74 @@ fun BoxTest(){
 
     ){
         Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colors.secondaryVariant),
+            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.primaryContainer),
             contentAlignment = Alignment.Center
         ){
             Text(
-                text = "2nd Variant",
-                color = MaterialTheme.colors.onSecondary,
-                fontSize = MaterialTheme.typography.caption.fontSize
+                text = "primary container",
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                fontSize = MaterialTheme.typography.labelSmall.fontSize
             )
         }
         Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colors.error),
+            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.secondaryContainer),
             contentAlignment = Alignment.Center
         ){
             Text(
-                text = "Error",
-                color = MaterialTheme.colors.onError,
-                fontSize = MaterialTheme.typography.caption.fontSize
+                text = "secondary container",
+                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                fontSize = MaterialTheme.typography.labelSmall.fontSize
             )
 
         }
         Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colors.surface),
+            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.tertiaryContainer),
+            contentAlignment = Alignment.Center
+        ){
+            Text(
+                text = "tertiary container",
+                color = MaterialTheme.colorScheme.onTertiaryContainer,
+                fontSize = MaterialTheme.typography.labelSmall.fontSize
+            )
+        }
+
+    }
+
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+
+    ){
+        Box(
+            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.surface),
             contentAlignment = Alignment.Center
         ){
             Text(
                 text = "Surface",
-                color = MaterialTheme.colors.onSurface,
-                fontSize = MaterialTheme.typography.caption.fontSize
+                color = MaterialTheme.colorScheme.onSurface,
+                fontSize = MaterialTheme.typography.labelSmall.fontSize
+            )
+        }
+        Box(
+            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.surfaceVariant),
+            contentAlignment = Alignment.Center
+        ){
+            Text(
+                text = "Surface Variant",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                fontSize = MaterialTheme.typography.labelSmall.fontSize
+            )
+
+        }
+        Box(
+            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.error),
+            contentAlignment = Alignment.Center
+        ){
+            Text(
+                text = "error",
+                color = MaterialTheme.colorScheme.onError,
+                fontSize = MaterialTheme.typography.labelSmall.fontSize
             )
         }
 
