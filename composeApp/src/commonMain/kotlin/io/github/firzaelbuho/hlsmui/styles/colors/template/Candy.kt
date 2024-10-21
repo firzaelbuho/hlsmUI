@@ -1,9 +1,8 @@
-package io.github.firzaelbuho.hlsmui.styles.colors.scheme
+package io.github.firzaelbuho.hlsmui.styles.colors.template
 
 import androidx.compose.material.Colors
 import androidx.compose.ui.graphics.Color
 import io.github.firzaelbuho.hlsmui.styles.colors.HlsmColors
-import io.github.firzaelbuho.hlsmui.styles.themes.HlsmTheme
 
 private val darkCandy = Colors(
     primary = Color(0xFFFFC0CB),  // Pink pastel

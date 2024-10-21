@@ -6,9 +6,13 @@ import io.github.firzaelbuho.hlsmui.styles.themes.HlsmTheme
 
 
 @Composable
-fun HlsmAppTheme(hlsmTheme: HlsmTheme = HlsmTheme(), content: @Composable () -> Unit) {
+fun HlsmAppTheme(
+    hlsmTheme: HlsmTheme = HlsmTheme(),
+    isDark: Boolean,
+    content: @Composable () -> Unit
+) {
     MaterialTheme(
-        colors = if (hlsmTheme.isLight) hlsmTheme.hlsmColors.light else hlsmTheme.hlsmColors.dark,
+        colors = if (isDark) hlsmTheme.hlsmColors.dark else hlsmTheme.hlsmColors.light,
         shapes = hlsmTheme.shapes,
         typography = hlsmTheme.typography
     ){
