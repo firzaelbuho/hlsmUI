@@ -1,4 +1,4 @@
-package io.github.firzaelbuho.hlsmui.composable
+package io.github.firzaelbuho.hlsmui.composable.themes
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -13,8 +13,8 @@ fun HlsmAppTheme(
 ) {
     MaterialTheme(
         colorScheme = if (isDark) hlsmTheme.hlsmColorScheme.darkScheme else hlsmTheme.hlsmColorScheme.lightScheme,
-        shapes = hlsmTheme.shapes,
-//        typography = hlsmTheme.typography
+        shapes = hlsmTheme.hlsmShapes.shapes,
+        typography = hlsmTheme.getTypography()
     ){
         content()
     }

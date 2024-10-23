@@ -61,7 +61,8 @@ kotlin {
         }
         commonMain.dependencies {
 
-//            implementation("io.github.alexandrepiveteau:google-fonts-quicksand:1.0.0")
+            implementation(compose.components.resources)
+
 
             implementation(compose.runtime)
             implementation(compose.foundation)

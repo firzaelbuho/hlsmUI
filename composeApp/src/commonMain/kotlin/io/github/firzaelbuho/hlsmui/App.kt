@@ -1,26 +1,33 @@
 package io.github.firzaelbuho.hlsmui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
-import io.github.firzaelbuho.hlsmui.composable.DarkModeSwitch
+import io.github.firzaelbuho.hlsmui.composable.ButtonTest
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-import io.github.firzaelbuho.hlsmui.composable.HlsmAppTheme
-import io.github.firzaelbuho.hlsmui.composable.ThemeSelector
+import io.github.firzaelbuho.hlsmui.composable.themes.HlsmAppTheme
+import io.github.firzaelbuho.hlsmui.composable.test.ColorSchemeTest
+import io.github.firzaelbuho.hlsmui.composable.test.FontTest
+import io.github.firzaelbuho.hlsmui.composable.test.ShapesTest
+import io.github.firzaelbuho.hlsmui.composable.test.TypographyTest
+import io.github.firzaelbuho.hlsmui.composable.themes.FontSelector
+import io.github.firzaelbuho.hlsmui.composable.themes.ModeSwitcher
+import io.github.firzaelbuho.hlsmui.composable.themes.ShapeSelector
+import io.github.firzaelbuho.hlsmui.composable.themes.ThemeSelector
+import io.github.firzaelbuho.hlsmui.styles.font.HlsmFont
+import io.github.firzaelbuho.hlsmui.styles.shapes.HlsmShapes
 import io.github.firzaelbuho.hlsmui.styles.themes.HlsmTheme
 
 
@@ -29,8 +36,11 @@ import io.github.firzaelbuho.hlsmui.styles.themes.HlsmTheme
 fun App() {
 
 
-    val themes = HlsmTheme.getAllThemes()
+//    val themes = HlsmTheme.getAllThemes()
     var currentTheme  by remember { mutableStateOf(HlsmTheme.Candy) }
+    var currentFont  by remember { mutableStateOf(HlsmFont.Quicksand) }
+    var currentShape  by remember { mutableStateOf(HlsmShapes.Default) }
+
     var isDark by remember {mutableStateOf(false)}
 
     HlsmAppTheme(
@@ -45,194 +55,55 @@ fun App() {
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
-
-
-
-
             ThemeSelector(
-                currentTheme,
-                themes,
+                currentHlsmTheme = currentTheme,
+
                 onThemeSelected = {
                     currentTheme = it
                 }
             )
-            DarkModeSwitch(
+            Spacer(modifier = Modifier.size(10.dp))
+            FontSelector(
+                currentHlsmFont = currentFont,
+                onHlsmFontSelected = {
+                    currentFont = it
+                    currentTheme = currentTheme.copy(hlsmFont = currentFont, hlsmShapes = currentShape)
+                }
+            )
+            Spacer(modifier = Modifier.size(10.dp))
+            ShapeSelector(
+                currentHlsmFont = currentShape,
+                onHlsmShapesSelected = {
+                    currentShape = it
+                    currentTheme = currentTheme.copy(hlsmFont = currentFont, hlsmShapes = currentShape)
+
+                }
+            )
+            Spacer(modifier = Modifier.size(10.dp))
+            ModeSwitcher(
                 isDark = isDark,
                 onModeChanged = {
                     isDark = it
                 }
             )
-            Text(
-                text = "Button Shapes",
-                color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.labelSmall
-            )
-            ButtonTest()
-            BoxTest()
+            Spacer(modifier = Modifier.size(10.dp))
 
 
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                item {
 
-        }
-    }
-}
 
-@Composable
-fun ButtonTest(){
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-//                horizontalArrangement = Arrangement.SpaceBetween
-    ){
-        Button(
-            onClick = {},
-            shape = MaterialTheme.shapes.small
-        ){
-            Text(
-                text = "Small Round",
-                color = MaterialTheme.colorScheme.onPrimary
-            )
-        }
-        Button(
-            onClick = {},
-            shape = MaterialTheme.shapes.medium
-        ){
-            Text(
-                text = "Medium Round",
-                color = MaterialTheme.colorScheme.onPrimary
-            )
-        }
-        Button(
-            onClick = {},
-            shape = MaterialTheme.shapes.large
-        ){
-            Text(
-                text = "Large Round",
-                color = MaterialTheme.colorScheme.onPrimary
-            )
+                    FontTest(currentTheme.hlsmFont)
+                    Spacer(modifier = Modifier.height(40.dp))
+                    TypographyTest()
+                    Spacer(modifier = Modifier.height(40.dp))
+                    ShapesTest()
+                    Spacer(modifier = Modifier.height(40.dp))
+                    ColorSchemeTest()
+                }
+            }
         }
     }
 }
 
 
-@Composable
-fun BoxTest(){
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-
-    ){
-        Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.primary),
-            contentAlignment = Alignment.Center
-        ){
-            Text(
-                text = "Primary",
-                color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = MaterialTheme.typography.labelSmall.fontSize
-            )
-        }
-        Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.secondary),
-            contentAlignment = Alignment.Center
-        ){
-            Text(
-                text = "Secondary",
-                color = MaterialTheme.colorScheme.onSecondary,
-                fontSize = MaterialTheme.typography.labelSmall.fontSize
-            )
-
-        }
-        Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.tertiary),
-            contentAlignment = Alignment.Center
-        ){
-            Text(
-                text = "tertiary",
-                color = MaterialTheme.colorScheme.onTertiary,
-                fontSize = MaterialTheme.typography.labelSmall.fontSize
-            )
-        }
-
-    }
-
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-
-    ){
-        Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.primaryContainer),
-            contentAlignment = Alignment.Center
-        ){
-            Text(
-                text = "primary container",
-                color = MaterialTheme.colorScheme.onPrimaryContainer,
-                fontSize = MaterialTheme.typography.labelSmall.fontSize
-            )
-        }
-        Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.secondaryContainer),
-            contentAlignment = Alignment.Center
-        ){
-            Text(
-                text = "secondary container",
-                color = MaterialTheme.colorScheme.onSecondaryContainer,
-                fontSize = MaterialTheme.typography.labelSmall.fontSize
-            )
-
-        }
-        Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.tertiaryContainer),
-            contentAlignment = Alignment.Center
-        ){
-            Text(
-                text = "tertiary container",
-                color = MaterialTheme.colorScheme.onTertiaryContainer,
-                fontSize = MaterialTheme.typography.labelSmall.fontSize
-            )
-        }
-
-    }
-
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-
-    ){
-        Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.surface),
-            contentAlignment = Alignment.Center
-        ){
-            Text(
-                text = "Surface",
-                color = MaterialTheme.colorScheme.onSurface,
-                fontSize = MaterialTheme.typography.labelSmall.fontSize
-            )
-        }
-        Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.surfaceVariant),
-            contentAlignment = Alignment.Center
-        ){
-            Text(
-                text = "Surface Variant",
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                fontSize = MaterialTheme.typography.labelSmall.fontSize
-            )
-
-        }
-        Box(
-            modifier = Modifier.size(100.dp).background(MaterialTheme.colorScheme.error),
-            contentAlignment = Alignment.Center
-        ){
-            Text(
-                text = "error",
-                color = MaterialTheme.colorScheme.onError,
-                fontSize = MaterialTheme.typography.labelSmall.fontSize
-            )
-        }
-
-    }
-}

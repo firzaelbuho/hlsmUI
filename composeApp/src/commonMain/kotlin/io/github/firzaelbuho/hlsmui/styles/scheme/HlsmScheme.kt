@@ -2,6 +2,7 @@ package io.github.firzaelbuho.hlsmui.styles.scheme
 
 
 import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import io.github.firzaelbuho.hlsmui.styles.scheme.template.CandyColorScheme
 import io.github.firzaelbuho.hlsmui.styles.scheme.template.ChocolateColorScheme
@@ -12,18 +13,22 @@ import io.github.firzaelbuho.hlsmui.styles.scheme.template.ForestColorScheme
 import io.github.firzaelbuho.hlsmui.styles.scheme.template.GalaxyColorScheme
 import io.github.firzaelbuho.hlsmui.styles.scheme.template.LangitBiruColorScheme
 import io.github.firzaelbuho.hlsmui.styles.scheme.template.LavenderColorScheme
+import io.github.firzaelbuho.hlsmui.styles.scheme.template.LuxuryColorScheme
+import io.github.firzaelbuho.hlsmui.styles.scheme.template.MonochromeColorScheme
 import io.github.firzaelbuho.hlsmui.styles.scheme.template.NatureColorScheme
 import io.github.firzaelbuho.hlsmui.styles.scheme.template.OceanColorScheme
 import io.github.firzaelbuho.hlsmui.styles.scheme.template.PastelColorScheme
 import io.github.firzaelbuho.hlsmui.styles.scheme.template.RedGroupColorScheme
+import io.github.firzaelbuho.hlsmui.styles.scheme.template.SakuraColorScheme
 import io.github.firzaelbuho.hlsmui.styles.scheme.template.SkyColorScheme
+import io.github.firzaelbuho.hlsmui.styles.scheme.template.SnowColorScheme
 import io.github.firzaelbuho.hlsmui.styles.scheme.template.SunsetColorScheme
 import io.github.firzaelbuho.hlsmui.styles.scheme.template.VintageColorScheme
 
 
 class HlsmColorScheme (
     val lightScheme : ColorScheme = lightColorScheme(),
-    val darkScheme : ColorScheme = lightColorScheme()
+    val darkScheme : ColorScheme = darkColorScheme()
 ){
     companion object{
         val Default = HlsmColorScheme()
@@ -48,6 +53,11 @@ class HlsmColorScheme (
         val Emerald = EmeraldColorScheme
         val Sky = SkyColorScheme
         val Vintange = VintageColorScheme
+        val Luxury = LuxuryColorScheme
+
+        val Sakura = SakuraColorScheme
+        val Snow = SnowColorScheme
+        val Monochrome = MonochromeColorScheme
 
 
 
