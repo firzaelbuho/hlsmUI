@@ -60,11 +60,11 @@ publishing {
         }
     }
 
-    repositories {
-        maven {
-            url = uri("C:/data/repo")  // Path langsung ke directory tujuan
-        }
-    }
+//    repositories {
+//        maven {
+//            url = uri("C:/data/repo")  // Path langsung ke directory tujuan
+//        }
+//    }
 }
 
 
