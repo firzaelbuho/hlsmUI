@@ -10,7 +10,7 @@ allprojects {
 
 
 plugins {
-    id("com.vanniktech.maven.publish") version "0.28.0"
+//    id("com.vanniktech.maven.publish") version "0.28.0"
     // this is necessary to avoid the plugins to be loaded multiple times
     // in each subproject's classloader
     alias(libs.plugins.androidApplication) apply false

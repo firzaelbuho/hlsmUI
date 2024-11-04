@@ -286,6 +286,12 @@ data class HlsmTheme (
             hlsmFont = HlsmFont.Quicksand
         )
 
+        val JakartaBus = HlsmTheme(
+            name = "Jakarta Bus",
+            hlsmColorScheme = HlsmColorScheme.JakartaBus,
+            hlsmFont = HlsmFont.PlusJakartaSans
+        )
+
 
         fun getAllThemes():List<HlsmTheme>{
             val themes = listOf(
@@ -303,6 +309,7 @@ data class HlsmTheme (
 
                 HlsmTheme.Galaxy,
 
+                HlsmTheme.JakartaBus,
                 HlsmTheme.LangitBiru,
                 HlsmTheme.Lavender,
                 HlsmTheme.Luxury,

@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import io.github.firzaelbuho.hlsmui.composable.ButtonTest
-import org.jetbrains.compose.ui.tooling.preview.Preview
+//import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import io.github.firzaelbuho.hlsmui.composable.themes.HlsmAppTheme
 import io.github.firzaelbuho.hlsmui.composable.test.ColorSchemeTest
@@ -32,7 +32,6 @@ import io.github.firzaelbuho.hlsmui.styles.themes.HlsmTheme
 
 
 @Composable
-@Preview
 fun App() {
 
 
